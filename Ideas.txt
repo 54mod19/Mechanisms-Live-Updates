@@ -1,0 +1,15 @@
+Annealing Copper & Wire
+--> Cheaper Copper Wire Recipes
+--> --> Wire Mill Upgrade
+MV Chips
+--> Titanium or CrV Steel
+--> --> Titanium Wire/Aluminium Wire for MV
+--> --> --> Gold & Silver
+--> --> --> --> Gold wire for HV, ??? for EV
+--> --> Alloying
+Oil Drilling
+--> Plastic
+Automation
+--> Mining
+--> --> Sand Processer
+--> Buff greenhouse

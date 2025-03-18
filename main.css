@@ -1,0 +1,126 @@
+.centerDiv{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#climbSummit{
+    width: 25%;
+}
+
+.hunger-bar-container, .xp-bar-container, .health-bar-container{
+    height: 10px;
+    width: 100%;
+    border: 1px solid black;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.hunger-bar {
+    width: 100%;
+    background-color: green;
+    height: 10px;
+    border-radius: 10px;
+}
+.health-bar {
+    width: 100%;
+    background-color: red;
+    height: 10px;
+    border-radius: 10px;
+}
+@keyframes xpColors {
+  0%   {background-color: red;}
+  10%  {background-color: orange;}
+  20%  {background-color: yellow;}
+  30%  {background-color: lime;}
+  40%  {background-color: blue;}
+  50%  {background-color: purple;}
+  60%  {background-color: blue;}
+  70%  {background-color: lime;}
+  80%  {background-color: yellow;}
+  90%  {background-color: orange;}
+  100% {background-color: red;}
+}
+.xp-bar {
+    width: 0%;
+    background-color: green;
+    height: 10px;
+    border-radius: 10px;
+    animation-name: xpColors;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+.inventory, .summitFlexContainer, .biomeInfoFlex, .flexBarContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    bottom: 0;
+}
+
+.flexInvF, .flexInvM, .flexInvT, .flexInvE, .flexInvC{
+    width: 20%;
+}
+.flexInfB, .flexInfW, .flexBar, .flexSummit{
+    width: 50%;
+}
+p, h3, h4{
+    line-height: 0.05;
+}
+p{
+    font-size: 16px;
+}
+
+.crafting, .building, .metalWorkshopRecipes, .forgeRecipes, .campfireRecipes, .eat, .kitchen, .viewFarm, .viewGreenhouse{
+    display: none;
+}
+
+h1, #blab, #xp, #time, #health{
+    text-align: center;
+}
+
+.upgrades, .items button{
+    display: grid;
+    grid-template-columns: repeat(1, 96px);
+    margin-bottom: 10px;
+}
+
+#mine, #chop, #hunt, #forgeCraft, #metalWorkshopCraft, #campfireCraft, .saveLoad, #farm, #viewGreenhouse, #viewCrusher, .viewCrusher,
+ .hide, .flexInvF, .flexInvM, .flexInvT, .flexInvE, .flexInvC, .dead, .craftingBook, .biomeInfo, .summitMenu{
+    display: none;
+}
+#viewBiome, #viewCrafting{
+    display: inline-block;
+}
+
+#restart:hover{
+    background-color: red;
+}
+
+button{
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    font-size: 18px;
+    transition-duration: 0.4s;
+    border-radius: 0px;
+    word-wrap: break-word;
+    max-width: 40%;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+button:disabled{
+    border: 2px solid grey;
+    color: grey;
+}
+button:disabled:hover{
+    background-color: grey;
+    color: white;
+}

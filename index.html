@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<head>
+    <title>Mechanisms - Private</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="dead">
+        <h1>You Died!</h1>
+        <button id="tryAgain">Play Again</button>
+    </div>
+    <div class="content">
+        <h1 id="Title">Mechanisms - Development Mode</h1>
+        <div class="flexBarContainer">
+            <div class="flexBar">
+                <h3 id="blab">Hunger: 20/20</h3>
+                <div class="hunger-bar-container">
+                    <div class="hunger-bar" id="hunger-bar"></div>
+                </div>
+            </div>
+            <div class="flexBar">
+                <h3 id="health">Health: 20/20</h3>
+                <div class="health-bar-container">
+                    <div class="health-bar" id="health-bar"></div>
+                </div>
+            </div>
+        </div>
+        <h3 id="xp">Level: 0</h3>
+        <div class="xp-bar-container">
+            <div class="xp-bar" id="xp-bar"></div>
+        </div>
+        <p id="time">Forest, Clear Skies, Day: 1, 06:00</p>
+        <div class="inventory">
+            <div class="flexInvF">
+                <h3 style="color:darkGreen">Forestry</h3>
+                <p id="sticks">Sticks: 0</p>
+                <p id="sand">Sand: 0</p>
+                <p id="clay">Clay: 0</p>
+                <p id="sugarCane">Sugar Cane: 0</p>
+                <p id="bricks">Bricks: 0</p>
+                <p id="leather">Leather: 0</p>
+                <p id="wood">Wood: 0</p>
+                <p id="charcoal">Charcoal: 0</p>
+            </div>
+            <div class="flexInvC">
+                <h3 style="color:darkViolet">Food</h3>
+                <p id="salt">Salt: 0</p>
+                <p id="sugar">Sugar: 0</p>
+                <p id="berries">Berries: 0</p>
+                <p id="berryJam">Jam: 0</p>
+                <p id="apples">Apples: 0</p>
+                <p id="wheat">Wheat: 0</p>
+                <p id="bread">Bread: 0</p>
+                <p id="seeds">Seeds: 0</p>
+                <p id="meat">Meat: 0</p>
+                <p id="cookedMeat">Cooked Meat: 0</p>
+                <p id="saltedMeat">Salted Meat: 0</p>
+                <p id="applePie">Apple Pie: 0</p>
+            </div>
+            <div class="flexInvM">
+                <h3 style="color:darkGray">Mining</h3>
+                <p id="stone">Stone: 0</p>
+                <p id="copperOre">Copper Ore: 0</p>
+                <p id="copperIngots">Copper Ingots: 0</p>
+                <p id="annealedCopperIngots">Annealed Copper Ingots: 0</p>
+                <p id="coal">Coal: 0</p>
+                <p id="ironOre">Iron Ore: 0</p>
+                <p id="ironIngots">Iron Ingots: 0</p>
+                <p id="steelIngots">Steel Ingots: 0</p>
+                <p id="aluminumOre">Aluminum Ore: 0</p>
+                <p id="aluminumIngots">Aluminum Ingots: 0</p>
+            </div>
+            <div class="flexInvE">
+                <h3 style="color:darkCyan">Electronics</h3>
+                <p id="glass">Glass: 0</p>
+                <p id="copperWire">Copper Wire: 0</p>
+                <p id="annealedCopperWire">Annealed Copper Wire: 0</p>
+                <p id="steelPlates">Steel Plates: 0</p>
+                <p id="aluminumPlates">Aluminum Plates: 0</p>
+                <p id="vaccumTubes">Vaccum Tubes: 0</p>
+                <p id="lvChips">LV Chips: 0</p>
+                <p id="mvChips">MV Chips: 0</p>
+                <p id="hvChips">HV Chips: 0</p>
+            </div>
+            <div class="flexInvT">
+                <h3 style="color:darkOrange">Tools</h3>
+                <p id="miningTool">Current mining tool: None</p>
+                <p id="huntingTool">Current hunting tool: None</p>
+                <p id="choppingTool">Current chopping tool: None</p>
+                <p id="artifact">Current artifact: None</p>
+                <p id="Gpower">Gathering Power: 1</p>
+                <p id="Mpower">Mining Power: 0</p>
+                <p id="Cpower">Chopping Power: 0</p>
+                <p id="campfire"></p>
+                <p id="forge"></p>
+                <p id="metalWorkshop"></p>
+                <p id="greenhouse"></p>
+                <p id="crusher"></p>
+            </div>
+        </div>
+        <hr>
+        <div class="menus">
+            <div class="main">
+                <h2>Recourses</h2>
+                <button id="gather">Explore Forest (2 Hunger, 1 Health)</button>
+                <button id="hunt">Hunt Meat (2 Hunger, 7 Health)</button>
+                <button id="mine">Mine Stone (4 Hunger, 5 Health)</button>
+                <button id="chop">Chop Wood (5 Hunger, 1 Health)</button>
+                <div class="hide">
+                    <h2>Menus</h2>
+                    <button id="eat">Eat Food</button>
+                    <button id="kitchen">View Kitchen</button>
+                    <button id="farm">View Farm</button>
+                    <button id="craft">Craft Tools</button>
+                    <button id="build">Build Workstations</button>
+                    <button id="campfireCraft">Campfire Recipes</button>
+                    <button id="forgeCraft">Forge Recipes</button>
+                    <button id="metalWorkshopCraft">Metal Workshop Recipes</button>
+                    <button id="viewGreenhouse">View Greenhouse</button>
+                    <button id="viewCrusher">View Crusher</button>
+                    <div>
+                        <button id="viewBiome">View Biome & Weather Information</button>
+                        <button id="viewSummit">View Summit</button>
+                        <button id="saveLoad">Saving</button>
+                    </div>
+                </div>
+            </div>
+            <div class="crafting">
+                <div class="basicTools">
+                    <h2>Basic Tools</h2>
+                    <button id="pointyStick">Craft Pointy Stick (2 Sticks)</button>
+                    <button id="sharpStone">Craft Sharp Stone (2 Stone)</button>
+                    <button id="stoneAxe">Craft Stone Axe (2 Sticks, 3 Stone)</button>
+                    <button id="stoneSpear">Craft Stone Spear (3 Sticks, 2 Stone)</button>
+                    <button id="strawBasket">Weave Straw Basket (2 Sticks, 5 Wheat)</button>
+                </div>
+                <div class="copperTools">
+                    <h2>Copper Tools</h2>
+                    <button id="copperPickaxe">Craft Copper Pickaxe (4 Copper Ingots, 3 Sticks)</button>
+                    <button id="copperAxe">Craft Copper Axe (3 Copper Ingots, 2 Sticks)</button>
+                    <button id="copperKnife">Craft Copper Knife (2 Copper Ingots, 2 Sticks)</button>
+                    <button id="craftHornOfPlenty">Craft Horn Of Plenty (1 Copper Ingot, 2 Bread, 5 Stone)</button>
+                </div>
+                <div class="ironTools">
+                    <h2>Iron Tools</h2>
+                    <button id="ironPickaxe">Craft Iron Pickaxe (6 Iron Ingots, 4 Sticks, 3 Wood)</button>
+                    <button id="ironAxe">Craft Iron Axe (4 Iron Ingots, 3 Sticks, 2 Wood)</button>
+                </div>
+                <div>
+                    <button class="return">Return</button>
+                </div>
+            </div>
+            <div class="building">
+                <div class="buildButtons">
+                    <h2>Workstations</h2>
+                    <button id="buildCampfire">Build Campfire (6 Sticks, 3 Wheat, 4 Wood, 5 Stone)</button>
+                    <button id="buildForge">Build Forge (6 Sticks, 5 Bricks, 10 Wood, 10 Stone, 5 Copper Ore)</button>
+                    <button id="buildMetalWorkshop">Build Metal Workshop
+                    (15 Wood, 25 Stone, 5 Copper Ingots, 7 Iron Ingots, 4 Steel Ingots)</button>
+                    <button id="buildGreenhouse">Build Greenhouse (8 Glass, 4 Bricks, 3 Steel Ingots, 1 Steel Plates, 6 Copper Wire, 1 LV Chip)</button>
+                    <button id="buildCrusher">Build Crusher (4 Steel Ingots, 8 Copper Wire, 2 Steel Plates, 1 LV Chip)</button>
+                    </div>
+                    <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="forgeRecipes">
+                <h2>Forge Recipes</h2>
+                <button id="smeltGlass">Melt Glass (10 Ticks, 2 Sand, 3 Wood)</button>
+                <button id="smeltCopper">Smelt Copper (20 Ticks, 2 Copper Ore, 3 Wood)</button>
+                <button id="annealCopper">Anneal Copper (120 Ticks, 1 Copper Ingot, 3 Coal or Charcoal)</button>
+                <button id="smeltIron">Smelt Iron (20 Ticks, 2 Iron Ore, 3 Coal or Charcoal)</button>
+                <button id="smeltSteel">Forge Steel (60 Ticks, 2 Iron, 5 Coal or Charcoal)</button>
+                <button id="smeltAluminum">Smelt Aluminum (60 Ticks, 3 Aluminum Ore, 7 Coal or Charcoal)</button>
+                <h2>Forge Upgrades</h2>
+                <button id="forgeSpeedI">Heat Resistant Plating (4 Steel Plates)</button>
+                <button id="forgeSpeedII">Improved Heating Element (8 Copper Wire, 2 Vaccum Tubes)</button>
+                <button id="forgeAnnealing">Annealing Basin (4 Copper Ingots, 1 Steel Plate, 1 Vaccum Tube)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="metalWorkshopRecipes">
+                <h2>Metal Workshop Recipes</h2>
+                <button id="millCopper">Mill Copper (30 Ticks, 1 Copper Ingot)</button>
+                <button id="millAnnealedCopper">Mill Annealed Copper (20 Ticks, 1 Annealed Copper Ingot)</button>
+                <button id="pressSteel">Press Steel (60 Ticks, 2 Steel Ingots)</button>
+                <button id="pressAluminum">Press Aluminum (120 Ticks, 2 Aluminum Ingots)</button>
+                <button id="assembleVaccumTube">Assemble Vaccum Tube (90 Ticks, 2 Glass, 4 Copper Wire, 1 Steel Plate)</button>
+                <button id="assembleLVChip">Assemble LV Chip (120 Ticks, 8 Copper Wire, 2 Steel Plates, 3 Vaccum Tubes)</button>
+                <button id="assembleMVChip">Assemble MV Chip (180 Ticks, 8 Copper Wire, 2 Aluminum Plates, 3 LV Chips)</button>
+                <h2>Metal Workshop Upgrades</h2>
+                <button id="metalWorkshopSpeedI">Robotic Arm (4 Copper Wire, 2 Steel Ingots, 1 LV Chip)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="campfireRecipes">
+                <h2>Campfire Recipes</h2>
+                <button id="cookBread">Bake Bread (10 Ticks, 3 Wheat)</button>
+                <button id="cookMeat">Cook Meat (10 Ticks, 1 Meat)</button>
+                <button id="cookBricks">Smelt Brick (20 Ticks, 3 Clay)</button>
+                <button id="cookCharcoal">Make Charcoal (60 Ticks, 5 Wood)</button>
+                <h2>Campfire Upgrades</h2>
+                <button id="campfireSpeedI">Burn Charcoal (5 Stone, 5 Charcoal)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="eat">
+                <h2>Eat Food</h2>
+                <button id="eatBerries">Eat Berries (Restores 2 Hunger)</button>
+                <button id="eatApple">Eat Apple (Restores 5 Hunger)</button>
+                <button id="eatBread">Eat Bread (Restores 10 Hunger)</button>
+                <button id="eatBerryJam">Eat Jam (Restores 12 Hunger)</button>
+                <button id="eatCookedMeat">Eat Cooked Meat (Restores 15 Hunger)</button>
+                <button id="eatSaltedMeat">Eat Salted Meat (Restores 20 Hunger)</button>
+                <button id="eatApplePie">Eat Apple Pie (Restores 30 Hunger)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="kitchen">
+                <h2>Cook Meals</h2>
+                <button id="makeSugar">Make Sugar (5 Sugar Cane)</button>
+                <button id="makeBerryJam">Make Jam (5 Berries, 2 Sugar)</button>
+                <button id="makeApplePie">Bake Apple Pie (5 Apples, 3 Sugar, 10 Wheat)</button>
+                <button id="makeSaltedMeat">Salt Meat (1 Cooked Meat, 3 Salt)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="viewCrusher">
+                <h2>Crusher</h2>
+                <button id="crushStone">Crush Stone (30 Ticks, 10 Stone)</button>
+                <button id="crushStone2">Crush Stone (30 Ticks, 10 Stone)</button>
+                <h2>Crusher Upgrades</h2>
+                <button id="extraCrusher">Secondary Crusher (2 Steel Ingots, 1 Steel Plate, 1 LV Chip)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="viewFarm">
+                <h2>Farm</h2>
+                <button id="plantWheat">Plant Wheat (60 Ticks)</button>
+                <button id="plantWheat2">Plant Wheat (60 Ticks)</button>
+                <button id="plantBerries">Plant Berries (120 Ticks)</button>
+                <button id="plantBerries2">Plant Berries (120 Ticks)</button>
+                <button id="plantApples">Plant Apples (300 Ticks)</button>
+                <button id="plantSugarCane">Plant Sugar Cane (300 Ticks)</button>
+                <h2>Farm Upgrades</h2>
+                <button id="wheatPlot">Extra Wheat Plot (6 Sticks, 4 Wheat, 3 Wood, 5 Stone)</button>
+                <button id="berriesPlot">Extra Berries Plot (6 Sticks, 4 Wheat, 3 Wood, 5 Stone)</button>
+                <button id="farmSpeedI">Water Pump (4 Copper Ingots, 2 Steel Plates)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="viewGreenhouse">
+                <h2>Greenhouse</h2>
+                <button id="plantWheatG">Plant Wheat (60 Ticks)</button>
+                <button id="plantBerriesG">Plant Berries (120 Ticks)</button>
+                <h2>Greenhouse Upgrades</h2>
+                <button id="greenhouseSpeedI">Heat Lights (8 Copper Wire, 3 Vaccum Tubes)</button>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+            <div class="saveLoad">
+                <h2>Save & Load</h2>
+                <div><button id="saveGame">Save Game</button>
+                <button id="restart" style="border-color:red" style="color:red">Restart</button></div>
+                <button id="export">Export Save</button>
+                <button id="import">Import Save</button>
+                <div><input id="impexpField"></input></div>
+                <h2>Return</h2>
+                <button class="return">Return</button>
+            </div>
+        </div>
+    </div>
+    <div class="biomeInfo">
+        <div class="biomeInfoFlex">
+            <div class="flexInfB">
+                <h1>Biome Information</h1>
+                <h3>Desert Multipliers</h3>
+                <p>Gpower: 0.9</p>
+                <p>Hpower: 0.8</p>
+                <p>Mpower: 1.5</p>
+                <p>Cpower: 0.6</p>
+                <h3>Forest Multipliers</h3>
+                <p>Gpower: 0.9</p>
+                <p>Hpower: 1.2</p>
+                <p>Mpower: 0.7</p>
+                <p>Cpower: 1.4</p>
+                <h3>Tundra Multipliers</h3>
+                <p>Gpower: 1</p>
+                <p>Hpower: 1.1</p>
+                <p>Mpower: 0.8</p>
+                <p>Cpower: 1.2</p>
+                <h3>Plains Multipliers</h3>
+                <p>Gpower: 1</p>
+                <p>Hpower: 1.3</p>
+                <p>Mpower: 1</p>
+                <p>Cpower: 1</p>
+                <h3>Beach Multipliers</h3>
+                <p>Gpower: 1.3</p>
+                <p>Hpower: 1</p>
+                <p>Mpower: 0.7</p>
+                <p>Cpower: 1</p>
+                <h3>Jungle Multipliers</h3>
+                <p>Gpower: 1.1</p>
+                <p>Hpower: 0.7</p>
+                <p>Mpower: 0.8</p>
+                <p>Cpower: 1.6</p>
+            </div>
+            <div class="flexInfW">
+                <h1>Weather Information</h1>
+                <h3>Clear Skies Multipliers</h3>
+                <p>Gpower: 1</p>
+                <p>Hpower: 1.2</p>
+                <p>Mpower: 1</p>
+                <p>Cpower: 1</p>
+                <h3>Light Rain Multipliers</h3>
+                <p>Gpower: 0.9</p>
+                <p>Hpower: 1.1</p>
+                <p>Mpower: 1.1</p>
+                <p>Cpower: 0.9</p>
+                <h3>Rain Multipliers</h3>
+                <p>Gpower: 0.8</p>
+                <p>Hpower: 1</p>
+                <p>Mpower: 1.2</p>
+                <p>Cpower: 0.8</p>
+                <h3>Storm Multipliers</h3>
+                <p>Gpower: 0.7</p>
+                <p>Hpower: 0.8</p>
+                <p>Mpower: 1.3</p>
+                <p>Cpower: 0.6</p>
+                <h3>Tornado Multipliers</h3>
+                <p>Gpower: 0.5</p>
+                <p>Hpower: 0.5</p>
+                <p>Mpower: 0.7</p>
+                <p>Cpower: 0.5</p>
+                <!-- Copy Paste
+                <h3></h3>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                -->
+            </div>
+        </div>
+        <h3><a href="updates.html">Updates</a></h3>
+        <h3><a href="https://forms.gle/TD5EyJvcvGWetLiS7">Bug Report</a></h3>
+        <button id="returnBiome">Return</button>
+    </div>
+    <div class="summitMenu">
+        <h1>Summit</h1>
+        <h3 class="centerDiv"><button id="climbSummit">Embark</button></h3>
+        <h3 id="summitExploration" style="text-align:center">Summit Exploration: 0</h3>
+        <div class="summitFlexContainer">
+            <div class="flexSummit">
+                <p id="summitGmultiValue">Gathering Multiplier: 1</p>
+                <p id="summitHmultiValue">Hunting Multiplier: 1</p>
+                <p id="summitMmultiValue">Mining Multiplier: 1</p>
+                <p id="summitCmultiValue">Chopping Multiplier: 1</p>
+            </div>
+            <div class="flexSummit">
+                <p id="summitCampfireSpeed">Campfire Speed Multiplier: 1</p>
+                <p id="summitForgeSpeed">Forge Speed Multiplier: 1</p>
+                <p id="summitMetalWorkshopSpeed">Metal Workshop Speed Multiplier: 1</p>
+                <p id="summitCrusherSpeed">Crusher Speed Multiplier: 1</p>
+                <p id="summitGreenhouseSpeed">Greenhouse Speed Multiplier: 1</p>
+            </div>
+        </div>
+        <hr>
+        <h3>Summit Multipliers</h3>
+        <button id="summitGmulti">Upgrade Gathering Multiplier (1 Summit Exploration)</button>
+        <button id="summitHmulti">Upgrade Hunting Multiplier (1 Summit Exploration)</button>
+        <button id="summitMmulti">Upgrade Mining Multiplier (1 Summit Exploration)</button>
+        <button id="summitCmulti">Upgrade Chopping Multiplier (1 Summit Exploration)</button>
+        <h3>Workstation Speed</h3>
+        <button id="summitCSpeed">Upgrade Campfire Speed (1 Summit Exploration)</button>
+        <button id="summitFSpeed">Upgrade Forge Speed (1 Summit Exploration)</button>
+        <button id="summitMWSpeed">Upgrade Metal Workshop Speed (1 Summit Exploration)</button>
+        <button id="summitGSpeed">Upgrade Greenhouse Speed (2 Summit Exploration)</button>
+        <button id="summitCrSpeed">Upgrade Crusher Speed (2 Summit Exploration)</button>
+        <h3>Return</h3>
+        <button id="returnSummit">Return</button>
+    </div>
+</body>
